@@ -1,6 +1,15 @@
 {
 	"name": "suitecloudplusplus",
 	"displayName": "SuiteCloud++",
+	"author": {
+		"name": "Michoel Chaikin",
+		"email": "michoel@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/michoelchaikin/suitecloudplusplus.git"
+	},
+	"license": "MIT",
 	"description": "Supercharge your NetSuite development with multi-project and mulit-environment support",
 	"version": "0.0.1",
 	"engines": {
