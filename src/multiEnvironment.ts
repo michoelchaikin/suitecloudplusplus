@@ -80,19 +80,30 @@ function createStatusBarItem(): vscode.StatusBarItem {
  * @returns Promise<string[]> Promise that resolves to an array of authids
  */
 async function getNetSuiteEnvironments(): Promise<string[]> {
-  const { stdout } = await execPromise("suitecloud account:manageauth --list");
-
-  // The output includes some formatting escape characters that need to be removed
-  return stdout
-    .trim()
-    .split("\n")
-    .map(
-      (line) =>
-        line
-          .replace(/[\u0000-\u001F\u007F-\u009F]/g, "") // NOSONAR
-          .replace("[2K[1G", "")
-          .split(" | ")[0]
+  try {
+    const { stdout } = await execPromise(
+      "suitecloud account:manageauth --list"
     );
+
+    // The output includes some formatting escape characters that need to be removed
+    return stdout
+      .trim()
+      .split("\n")
+      .map(
+        (line) =>
+          line
+            .replace(/[\u0000-\u001F\u007F-\u009F]/g, "") // NOSONAR
+            .replace("[2K[1G", "")
+            .split(" | ")[0]
+      );
+  } catch (error) {
+    console.error(error);
+
+    vscode.window.showErrorMessage(
+      "Error retrieving NetSuite environments. Is SDF CLI installed?"
+    );
+    return [];
+  }
 }
 
 /**
