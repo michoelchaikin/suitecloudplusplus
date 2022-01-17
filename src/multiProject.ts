@@ -77,8 +77,6 @@ async function updateStatusBarItem(
     "utf8"
   );
 
-  vscode.window.showInformationMessage(fileContents);
-
   const { defaultProjectFolder } = JSON.parse(fileContents);
 
   if (!defaultProjectFolder) {
