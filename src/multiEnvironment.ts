@@ -53,7 +53,7 @@ function makeFileGlobPattern(fileName: string): vscode.RelativePattern {
   // The extension's activation event is "workspaceContains" so it shouldn't be possible for
   // there to be no workspace open.
   const workspaceFolder = vscode.workspace.workspaceFolders?.[0] || "";
-  return new vscode.RelativePattern(workspaceFolder, "project.json");
+  return new vscode.RelativePattern(workspaceFolder, fileName);
 }
 
 /**
