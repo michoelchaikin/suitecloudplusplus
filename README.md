@@ -4,13 +4,13 @@ A VSCode extension to supercharge NetSuite development.
 
 ## Features
 
-- Better multi environment support - a status bar indicator displays active environment, and provides a much quicker way of switching between environments
+- Better multi-environment support - a status bar indicator displays active environment, and provides a much quicker way of switching between environments
 
-![Multi Enviroment Support Gif](./img/multiEnvironment.gif)
+![Multi Environment Support Gif](./img/multiEnvironment.gif)
 
 - Multi project support - allows you to work on multiple SDF projects in a single VS Code workspace and seamlessly switch between them
 
-![Multi Project Support Gif](./img/multiProject.gif)
+![Multi-Project Support Gif](./img/multiProject.gif)
 ## Installation
 
 At this time, this extension has not been published on the VS Code Marketplace. To build manually, clone this repository and run:
@@ -18,7 +18,7 @@ At this time, this extension has not been published on the VS Code Marketplace. 
 - `npm install`
 - `npx vsce package`
 
-This will generate a *.vsix file which you can right click on within VS Code and select "Install Extension VSIX".
+This will generate a *.vsix file which you can right-click on within VS Code and select "Install Extension VSIX".
 
 ## Usage
 
@@ -28,11 +28,11 @@ Multi Environment Support requires [SuiteCloud CLI for Node.js](https://github.c
  
 The project's currently selected environment (authid) is displayed in the status bar at the bottom right. Click on it to switch between environments.
 
-**NOTE**: To imporove speed, the list of authids is cached when the extension is opened. If you add additional accounts, you will need to re-open VS Code to use them.
+**NOTE**: To improve speed, the list of authids is cached when the extension is opened. If you add additional accounts, you will need to re-open VS Code to use them.
 
 ### Multi Project Support
 
-1. Add a file `activeProject.json` to root of your project with the following contents:
+1. Add a file `activeProject.json` to the root of your project with the following contents:
 
    ```lang:json
     {
