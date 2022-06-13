@@ -13,7 +13,9 @@ A VSCode extension to supercharge NetSuite development.
 ![Multi-Project Support Gif](./img/multiProject.gif)
 ## Installation
 
-At this time, this extension has not been published on the VS Code Marketplace. To build manually, clone this repository and run:
+At this time, this extension has not been published on the VS Code Marketplace. You can download [the latest release](https://github.com/michoelchaikin/suitecloudplusplus/releases) as a *.vsix file, which you can [manually install in VS Code](https://code.visualstudio.com/docs/editor/extension-marketplace#_install-from-a-vsix).
+
+To build manually, clone this repository and run:
 
 - `npm install`
 - `npx vsce package`
