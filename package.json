@@ -11,7 +11,7 @@
 	},
 	"license": "MIT",
 	"description": "Supercharge your NetSuite development with multi-project and mulit-environment support",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.63.0"
 	},
