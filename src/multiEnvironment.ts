@@ -333,7 +333,19 @@ async function handleSelectEnvironment(
       }
     }
 
-    const env = await vscode.window.showQuickPick(filteredEnvironments.map(val => val.name), {
+    // Format list with more info. For consistency, using format for the native command "SuiteCloud: Setup Account"
+    const ROLE_SEPARATOR = ' | ';
+    const ACCT_SEPARATOR = ' @ ';
+    const options = filteredEnvironments.map(env => {
+      let str = (env.name || '').trim();
+      if (str !== MSG_SHOW_ALL_ENVIRONMENTS) {
+        str += env['Role'] ? ROLE_SEPARATOR + env['Role'] : '';
+        str += env['Account Name'] ? ACCT_SEPARATOR + env['Account Name'] : '';
+      }
+      return str;
+    });
+
+    let env = await vscode.window.showQuickPick(options, {
       title: "Select the NetSuite account to switch to. It will be set as the default for this project.",
       placeHolder: placeholder
     });
@@ -345,6 +357,10 @@ async function handleSelectEnvironment(
     if (env === MSG_SHOW_ALL_ENVIRONMENTS) {
       handleSelectEnvironment(projectJsonFile, environments, statusBarItem, true);
       return;
+    }
+
+    if (env.includes(ROLE_SEPARATOR)) {
+      env = env.substring(0, env.indexOf(ROLE_SEPARATOR));
     }
 
     defaultAuthIdsByProjectJson[projectJsonFile.path] = env;
