@@ -281,7 +281,13 @@ async function updateStatusBarItem(
       }
     }
 
-    return accInfo?.type === 'Production' ? true : (authId).toLowerCase().includes('prod');
+    // Logic:
+    // - Although NS reports tstdrv accounts as type Production, we should treat them as non-Prod
+    // - When this function is called before we've loaded the account info, we default to inferring
+    //   Production from "prod" in the auth ID name.
+    
+    let isTstdrvAcc = (accInfo?.['Account ID'] || '').toLowerCase().startsWith('tstdrv');
+    return isTstdrvAcc ? false : (accInfo?.type === 'Production' ? true : (authId).toLowerCase().includes('prod'));
   }
 }
 
